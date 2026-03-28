@@ -3,13 +3,24 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
+<!doctype html>
+<html class="no-js " lang="en">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
+    @await Component.InvokeAsync("_AdminLayoutHeadComponentPartial")
+
+<body class="theme-orange">
+
+    @await Component.InvokeAsync("_AdminLayoutPageLoaderComponentPartial")
+
+    @await Component.InvokeAsync("_AdminLayoutNavbarComponentPartial")
+
+    @await Component.InvokeAsync("_AdminLayourSidebarComponentPartial")
+
+    <br />
+
+    @RenderBody()
+
+    @await Component.InvokeAsync("_AdminLayoutScriptsComponentPartial")
+
 </body>
 </html>
