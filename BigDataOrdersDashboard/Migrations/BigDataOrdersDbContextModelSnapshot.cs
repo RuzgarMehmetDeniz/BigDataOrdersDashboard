@@ -35,7 +35,7 @@ namespace BigDataOrdersDashboard.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("BigDataOrdersDashboard.Entities.Customer", b =>
@@ -56,9 +56,6 @@ namespace BigDataOrdersDashboard.Migrations
 
                     b.Property<string>("CustomerCountry")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CustomerDescription")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CustomerDistrict")
@@ -87,7 +84,7 @@ namespace BigDataOrdersDashboard.Migrations
 
                     b.HasKey("CustomerId");
 
-                    b.ToTable("Customers", (string)null);
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("BigDataOrdersDashboard.Entities.Message", b =>
@@ -120,7 +117,7 @@ namespace BigDataOrdersDashboard.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Messages", (string)null);
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("BigDataOrdersDashboard.Entities.Order", b =>
@@ -161,7 +158,7 @@ namespace BigDataOrdersDashboard.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("BigDataOrdersDashboard.Entities.Product", b =>
@@ -201,7 +198,7 @@ namespace BigDataOrdersDashboard.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("BigDataOrdersDashboard.Entities.Review", b =>
@@ -242,7 +239,7 @@ namespace BigDataOrdersDashboard.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Reviews", (string)null);
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("BigDataOrdersDashboard.Entities.Message", b =>
