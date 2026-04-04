@@ -22,7 +22,7 @@
                         <tr>
                             <th>Müşteri</th>
                             <th>Ürün</th>
-                            <th>Birim Fiyat / €</th>
+                            <th>Birim Fiyat / $</th>
                             <th>Miktar</th>
                             <th>Toplam Fiyat</th>
                             <th>Ödeme Yöntemi</th>
@@ -37,7 +37,7 @@
                                 <td>@item.ProductName</td>
                                 <td>@item.UnitPrice</td>
                                 <td>@item.Quantity</td>
-                                <td>@((item.UnitPrice * item.Quantity).ToString("N2")) €</td>
+                                <td>@((item.UnitPrice * item.Quantity).ToString("N2")) $</td>
 
                                 <td>
                                     @if (item.PaymentMethod == "Kredi Kartı")
