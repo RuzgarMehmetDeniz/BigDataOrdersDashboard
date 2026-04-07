@@ -1,36 +1,303 @@
-﻿<aside id="leftsidebar" class="sidebar">
-    <!-- User Info -->
-    <div class="user-info">
-        <div class="image"> <img src="https://avatars.githubusercontent.com/u/226400363?v=4" width="48" height="48" alt="User" /> </div>
-        <div class="info-container">
-            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Rüzgar Deniz</div>
-            <div class="email">Admin Paneli</div>
+﻿
+<aside id="leftsidebar" class="sidebar">
+    <style>
+        #leftsidebar.sidebar {
+            width: 260px;
+            min-height: 100vh;
+            background: #0f0f14;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 100;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        #leftsidebar * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        #leftsidebar .sb-brand {
+            padding: 20px 20px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            flex-shrink: 0;
+        }
+
+        #leftsidebar .sb-brand-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        #leftsidebar .sb-brand-sub {
+            font-size: 11px;
+            color: rgba(255,255,255,0.3);
+            margin-top: 2px;
+        }
+
+        #leftsidebar .sb-user-card {
+            margin: 14px 12px;
+            padding: 12px;
+            background: rgba(124,58,237,0.1);
+            border: 1px solid rgba(124,58,237,0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        #leftsidebar .sb-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid rgba(124,58,237,0.5);
+        }
+
+            #leftsidebar .sb-avatar img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+        #leftsidebar .sb-user-name {
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.2;
+        }
+
+        #leftsidebar .sb-user-role {
+            font-size: 11px;
+            color: #a78bfa;
+            margin-top: 2px;
+        }
+
+        #leftsidebar .sb-online-dot {
+            width: 7px;
+            height: 7px;
+            background: #22c55e;
+            border-radius: 50%;
+            margin-left: auto;
+            flex-shrink: 0;
+            box-shadow: 0 0 6px rgba(34,197,94,0.6);
+        }
+
+        #leftsidebar .sb-nav {
+            padding: 4px 10px;
+            flex: 1;
+        }
+
+        #leftsidebar .sb-section-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.2);
+            padding: 14px 12px 6px;
+        }
+
+        #leftsidebar .sb-nav a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+            transition: background 0.15s, color 0.15s;
+            margin-bottom: 1px;
+            position: relative;
+        }
+
+            #leftsidebar .sb-nav a:hover {
+                background: rgba(255,255,255,0.06);
+                color: rgba(255,255,255,0.9);
+            }
+
+            #leftsidebar .sb-nav a.active {
+                background: rgba(124,58,237,0.18);
+                color: #c4b5fd;
+            }
+
+                #leftsidebar .sb-nav a.active::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 20%;
+                    bottom: 20%;
+                    width: 3px;
+                    background: #7c3aed;
+                    border-radius: 0 2px 2px 0;
+                }
+
+        #leftsidebar .sb-icon {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+            opacity: 0.65;
+        }
+
+        #leftsidebar .sb-nav a:hover .sb-icon,
+        #leftsidebar .sb-nav a.active .sb-icon {
+            opacity: 1;
+        }
+
+        #leftsidebar .sb-badge {
+            margin-left: auto;
+            font-size: 10px;
+            font-weight: 500;
+            padding: 2px 7px;
+            border-radius: 20px;
+            flex-shrink: 0;
+        }
+
+        #leftsidebar .sb-badge-purple {
+            background: rgba(124,58,237,0.25);
+            color: #a78bfa;
+        }
+
+        #leftsidebar .sb-badge-green {
+            background: rgba(34,197,94,0.15);
+            color: #4ade80;
+        }
+
+        #leftsidebar .sb-badge-amber {
+            background: rgba(245,158,11,0.15);
+            color: #fbbf24;
+        }
+
+        #leftsidebar .sb-divider {
+            height: 1px;
+            background: rgba(255,255,255,0.05);
+            margin: 8px 12px;
+        }
+
+        #leftsidebar .sb-footer {
+            padding: 14px 16px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.3);
+            font-size: 12px;
+            cursor: pointer;
+            transition: color 0.15s;
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+
+            #leftsidebar .sb-footer:hover {
+                color: rgba(255,255,255,0.6);
+            }
+    </style>
+
+    <!-- Brand -->
+    <div class="sb-brand">
+        <div class="sb-brand-name">Büyük Veri</div>
+        <div class="sb-brand-sub">Analitik Platformu</div>
+    </div>
+
+    <!-- User Card -->
+    <div class="sb-user-card">
+        <div class="sb-avatar">
+            <img src="https://avatars.githubusercontent.com/u/226400363?v=4" alt="Rüzgar Deniz" />
         </div>
+        <div>
+            <div class="sb-user-name">Rüzgar Deniz</div>
+            <div class="sb-user-role">Admin Paneli</div>
+        </div>
+        <div class="sb-online-dot"></div>
     </div>
-    <!-- #User Info -->
-    <!-- Menu -->
-    <div class="menu">
-        <ul class="list">
-            <li class="header">Menü</li>
 
-            <li><a href="/Dashboard/Index/"><i class="zmdi zmdi-grid"></i><span>Dashboard</span> </a></li>
-            <li><a href="/Category/CategoryList/"><i class="zmdi zmdi-delicious"></i><span>Kategoriler</span> </a></li>
-            <li><a href="/Product/ProductList/"><i class="zmdi zmdi-coffee"></i><span>Ürünler</span> </a></li>
-            <li><a href="/Customer/CustomerList/"><i class="zmdi zmdi-accounts"></i><span>Müşteriler</span> </a></li>
-            <li><a href="/Order/OrderList/"><i class="zmdi zmdi-shopping-basket"></i><span>Siparişler</span> </a></li>
-            <li><a href="/Statistic/Index/"><i class="zmdi zmdi-chart"></i><span>Sayısal İstatistkler</span> </a></li>
-            <li><a href="/Statistic/TextualStatistics/"><i class="zmdi zmdi-input-svideo"></i><span>Metinsel İstatistkler</span> </a></li>
-            <li><a href="/Review/ReviewList/"><i class="zmdi zmdi-comment-edit"></i><span>Değerlendirmeler</span> </a></li>
-            <li><a href="/Forecast/PaymentMethodForecast/"><i class="zmdi zmdi-spinner"></i><span>Ödeme Yöntemleri Tahminleri</span> </a></li>
-            <li><a href="/Forecast/GermanyCitiesForecast/"><i class="zmdi zmdi-city"></i><span>Almanya Sipariş Tahminleri</span> </a></li>
-            <li><a href="/CustomerAnalytics/Index/"><i class="zmdi zmdi-flower-alt"></i><span>Müşteri Analitiği</span> </a></li>
-            <li><a href="/CustomerLoyalty/ItalyLoyaltyScore/"><i class="zmdi zmdi-globe"></i><span>Sadakat Oranları</span> </a></li>
-            <li><a href="/CustomerLoyalty/ItalyLoyaltyScoreWithML/"><i class="zmdi zmdi-boat"></i><span>ML Sadakat Tahminleri</span> </a></li>
-            <li><a href="/Message/MessageList/"><i class="zmdi zmdi-text-format"></i><span>Mesaj Listesi</span> </a></li>
-            <li><a href="/CustomerDetail/Index"><i class="zmdi zmdi-ticket-star"></i><span>Bireysel Müşteri Analizi</span> </a></li>
+    <!-- Navigation -->
+    <div class="sb-nav">
 
+        <div class="sb-section-label">Genel</div>
 
-        </ul>
+        <a href="/Dashboard/Index/">
+            <span class="sb-icon">⊞</span> Dashboard
+        </a>
+        <a href="/Category/CategoryList/">
+            <span class="sb-icon">⊹</span> Kategoriler
+        </a>
+        <a href="/Product/ProductList/" class="active">
+            <span class="sb-icon">☕</span> Ürünler
+            <span class="sb-badge sb-badge-purple">1667</span>
+        </a>
+        <a href="/Customer/CustomerList/">
+            <span class="sb-icon">◎</span> Müşteriler
+        </a>
+        <a href="/Order/OrderList/">
+            <span class="sb-icon">◈</span> Siparişler
+            <span class="sb-badge sb-badge-green">Yeni</span>
+        </a>
+
+        <div class="sb-divider"></div>
+        <div class="sb-section-label">Analitik</div>
+
+        <a href="/Statistic/Index/">
+            <span class="sb-icon">◑</span> Sayısal İstatistikler
+        </a>
+        <a href="/Statistic/TextualStatistics/">
+            <span class="sb-icon">≡</span> Metinsel İstatistikler
+        </a>
+        <a href="/Review/ReviewList/">
+            <span class="sb-icon">✎</span> Değerlendirmeler
+        </a>
+
+        <div class="sb-divider"></div>
+        <div class="sb-section-label">Tahminler & ML</div>
+
+        <a href="/Forecast/PaymentMethodForecast/">
+            <span class="sb-icon">⟳</span> Ödeme Yöntemleri Tahminleri
+            <span class="sb-badge sb-badge-amber">ML</span>
+        </a>
+        <a href="/Forecast/GermanyCitiesForecast/">
+            <span class="sb-icon">◉</span> Almanya Sipariş Tahminleri
+        </a>
+        <a href="/CustomerAnalytics/Index/">
+            <span class="sb-icon">❋</span> Müşteri Analitiği
+        </a>
+        <a href="/CustomerLoyalty/ItalyLoyaltyScore/">
+            <span class="sb-icon">◌</span> Sadakat Oranları
+        </a>
+        <a href="/CustomerLoyalty/ItalyLoyaltyScoreWithML/">
+            <span class="sb-icon">⛵</span> ML Sadakat Tahminleri
+            <span class="sb-badge sb-badge-amber">ML</span>
+        </a>
+
+        <div class="sb-divider"></div>
+        <div class="sb-section-label">Diğer</div>
+
+        <a href="/Message/MessageList/">
+            <span class="sb-icon">☰</span> Mesaj Listesi
+        </a>
+        <a href="/CustomerDetail/Index">
+            <span class="sb-icon">★</span> Bireysel Müşteri Analizi
+        </a>
+
     </div>
-    <!-- #Menu -->
+
+    <!-- Footer -->
+    <a href="/Account/Logout" class="sb-footer">
+        <span>⎋</span> Çıkış Yap
+    </a>
+
 </aside>
